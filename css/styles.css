@@ -507,6 +507,8 @@ height: 112px;
 
 .subscribe-form-btn {
   display: flex;
+  justify-content: center;
+  cursor: pointer;
   align-items: center;
   gap: 16px;
   padding: 8px 24px;
@@ -519,6 +521,11 @@ height: 112px;
   border-radius: 4px;
   background: var(--IRIS, #4d5ae5);
   border: currentColor;
+  min-width: 165px;
+}
+
+.subscribe-form-icon{
+  margin-left: 16px;
 }
 /*=====================================*\
   # Modal window
@@ -537,6 +544,9 @@ height: 112px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 .backdrop.is-open {
   opacity: 1;
@@ -544,17 +554,20 @@ height: 112px;
   pointer-events: initial;
 }
 .modal {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
   width: 408px;
   min-height: 584px;
-  padding: 24px;
-  padding-top: 72px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  background-color: #FCFCFC;
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 2px 1px 0px rgba(0, 0, 0, 0.20);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 72px 24px 24px 24px;
 }
+
 .modal-btn {
   position: absolute;
   top: 24px;
@@ -562,15 +575,28 @@ height: 112px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 24px;
+  width: 24px;
   height: 24px;
   background-color: transparent;
   border: none;
+  border-radius: 50%;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: #404bbf;
+  border: none;
+  fill: #ffffff;
 }
 .modal-btn-icon {
   fill: #E7E9FC;
   stroke: #2E2F42;
-  
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-caption {
   width: 360px;
@@ -585,6 +611,9 @@ line-height: 24px; /* 150% */
 letter-spacing: 0.32px;
 }
 
+.order-modal-inputs-wrapper{
+  margin-bottom: 8px;
+}
 .modal-form .form{
   display: flex;
   flex-direction: column;
@@ -597,8 +626,8 @@ letter-spacing: 0.32px;
   color: #8E8F99;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px; /* 116.667% */
-  letter-spacing: 0.48px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
 }
 .form-field {
   position: relative;
@@ -610,9 +639,25 @@ letter-spacing: 0.32px;
   border-radius: 4px;
   border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
   outline: transparent;
-  transition: border-color 300ms ease-in;
+  background-color: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+ .form-input .comment{
+  margin-bottom: 16px;
+  width: 100%;
+  height: 120px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  background-color: transparent;
+  padding: 8px 16px;
+  outline: transparent;
+  resize: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+ }
 
 .form-input:focus {
   border-color: #4D5AE5;
@@ -624,7 +669,7 @@ letter-spacing: 0.32px;
   transform: translateY(-50%);
   fill: transparent;
   stroke: #404040;
-  transition: stroke 300ms ease-in;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: #2E2F42;
 }
 .form-input:focus + .form-icon {
@@ -644,6 +689,27 @@ input:checked {
 stroke-width: 1px;
 }
 
+.form-field-checkbox{
+  margin-bottom: 16px;
+}
+
+.form-input-comment {
+  border-radius: 4px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  width: 100%;
+  height: 120px;
+  font-weight: 400;
+  flex-shrink: 0;
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  outline: transparent;
+  padding: 8px 16px;
+  resize: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .form-button {
   display: inline-flex;
 padding: 16px 32px;
