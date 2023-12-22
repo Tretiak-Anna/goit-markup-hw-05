@@ -597,14 +597,17 @@ height: 112px;
   transform: translate(-50%, -50%);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.close-btn .close:hover,
-.close-btn .close:focus {
-  fill: #ffffff;
-}
+
 .close-btn:hover,
 .close-btn:focus {
   background-color: #404bbf;
   border: none;
+}
+
+
+.close-btn:hover .close,
+.close-btn:focus .close {
+  fill: #ffffff;
 }
 .modal-caption {
 width: 360px;
@@ -703,7 +706,7 @@ stroke-width: 1px;
   margin-bottom: 24px;
 }
 
-.form-label. comment{
+.form-label .comment{
   margin-bottom: 16px;
 }
 .form-input-comment {
